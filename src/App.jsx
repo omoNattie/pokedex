@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 import Axios from "axios";
+import AOS from 'aos';
+
+import 'aos/dist/aos.css';
 import PageNav from "./components/PageNavigation";
 import PokemonCard from "./components/PokemonCard";
+
 import "./styles/main.scss";
+
+AOS.init();
 
 const App = () => {
   const [pokemon, setPokemon] = useState({});
-  const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=400";
+  const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=890";
 
   useEffect(() => {
     Axios.get(apiUrl)
@@ -17,13 +23,13 @@ const App = () => {
         alert("Something went wrong!");
         console.error(error);
       });
+
   }, []);
 
   return (
     <>
       <PageNav />
-      <h1>Pokemons:</h1>
-      <div className="pokemons-container">
+      <div className="pokemon-container">
         {pokemon.results?.map((pokemon, index) => (
           <PokemonCard key={index} index={index} pokemon={pokemon} />
         ))}
