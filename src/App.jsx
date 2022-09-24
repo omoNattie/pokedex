@@ -20,14 +20,15 @@ const App = () => {
     Axios.get(apiUrl)
       .then(response => {
         setPokemon(response.data);
-
-        setLoading(false);
       })
       .catch(error => {
         alert("Something went wrong!");
         console.error(error);
-      });
-
+      })
+      .then(() => {
+        setLoading(false);
+      })  
+      
   }, []);
 
   return (

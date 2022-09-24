@@ -1,6 +1,3 @@
-import React, {useState} from 'react';
-import { useEffect } from 'react';
-
 import "../styles/loading.scss"
 
 const Loadings = () => {
@@ -21,21 +18,11 @@ const Loadings = () => {
         "Marill can change its gender when evolving.",
         "Zubat does not have any eyes. ",
     ]
-    const [fact, setFact] = useState("Pikachu is a Japanese onomatopoeia for squeaking and shimmering.");
-
-    useEffect(() => {
-        setFact(facts[Math.floor(Math.random() * facts.length)]);
-        const interval = setInterval(() => {
-          setFact(facts[Math.floor(Math.random() * facts.length)]);
-        }, 2000);
-        return () => clearInterval(interval);
-      }, []);
-
     return (
         <>
-        <div className="abs-centered">
-            <p className='abt-decor'>
-                {fact}
+        <div className="abs-centered load">
+            <p className="abt-decor">
+                {facts[Math.floor(Math.random() * facts.length)]}
             </p>
             <div className="lds-ellipsis cent"><div></div><div></div><div></div><div></div></div>
         </div>

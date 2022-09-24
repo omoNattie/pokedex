@@ -29,13 +29,35 @@
   border: 1px solid #731b99;
   padding: 5px;
 
-  border-radius: 30px;
+  border-radius: 7px;
 
   color: #ffffff;
 
   transition: 0.5s;
+  padding: 5px;
+}
+
+.desc-blue {
+  font-family: monarda, sans-serif;
+
+  background-color: #1331e4;
+  border: 1px solid #102dd3;
+  padding: 5px;
+
+  border-radius: 7px;
+
+  color: #ffffff;
+
+  transition: 0.5s;
+
+  padding: 5px;
 }
 
 .desc:hover {
   transform: scale(1.04);
 }
+
+.desc-blue:hover {
+  transform: scale(1.04);
+}
+

@@ -45,7 +45,11 @@ const PokemonCard = ({ index, pokemon }) => {
             {name}
           </p>
           <p className="text-center desc">
-            {info.weight}lbs<br/>
+            weight: {info.weight}<br/>
+          </p>
+          <p className="text-center desc-blue">
+            height: {info.height}<br />
+            
           </p>
         </CardContent>
       </Card>
