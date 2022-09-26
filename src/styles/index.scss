@@ -1,6 +1,10 @@
 @media only screen and (max-width: 460px) {
+  .pokemon-container {
+    justify-content: center;
+  }
+
   .hover {
-    width: 125%;
+    width: 100%;
   }
 
   .card-image {

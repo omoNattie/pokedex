@@ -13,6 +13,7 @@ const App = () => {
   const [pokemon, setPokemon] = useState({});
   const [apiUrl, setApiUrl] = useState("https://pokeapi.co/api/v2/pokemon");
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     Axios.get(apiUrl)
@@ -31,27 +32,34 @@ const App = () => {
   const nextPokemons = () => {
     if (!pokemon.next) return;
     setApiUrl(pokemon.next);
+    setPage(page + 1);
   };
 
   const prevPokemons = () => {
     if (!pokemon.previous) return;
     setApiUrl(pokemon.previous);
+
+    if(page !== 1) {
+      setPage(page - 1);
+    }
   };
 
   return (
     <>
       {loading && <Loadings />}
-      <h1 className="poke-font" style={{ paddingLeft: "15px" }}>
-        Pokedex
-      </h1>
-      <Stack padding={4} spacing={2} direction="row">
-        <Button color="success" variant="contained" onClick={prevPokemons}>
-          Previous
-        </Button>
-        <Button color="secondary" variant="contained" onClick={nextPokemons}>
-          Next
-        </Button>
-      </Stack>
+      <div className="flex-between">
+        <Stack padding={2} spacing={2} direction="row">
+          <Button color="success" variant="contained" onClick={prevPokemons}>
+            Previous
+          </Button>
+          <Button color="secondary" variant="contained" onClick={nextPokemons}>
+           Next
+          </Button>
+          <p className="page">
+            Page {page}
+          </p>
+        </Stack>
+      </div>
       <div className="pokemon-container">
         {pokemon.results?.map(pokemon => {
           const pokemonId = pokemon.url.split("/")[6];
